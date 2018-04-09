@@ -1,0 +1,45 @@
+Download Kafka https://www.apache.org/dyn/closer.cgi?path=/kafka/1.1.0/kafka_2.11-1.1.0.tgz
+
+Unzip the file
+
+
+Start ZooKeeper
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Start Kafka server
+
+bin/kafka-server-start.sh config/server.properties
+
+Create Topic
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Toppings
+
+
+List all topics
+
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+List Topic details
+
+bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic topping
+
+Create producer
+
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Toppings
+
+
+Start Consumer
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+
+
+Stop Kafka Server
+
+bin/kafka-server-stop.sh
+
+
+Stop ZooKeeper
+
+
+bin/zookeeper-server-stop.sh
